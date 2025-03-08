@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Amenity {
+  POOL
+  GYM
+  CLUB
+  PARKING
+  SECURITY
+  LANDLINE
+  ELEVATOR
+  BALCONY
+  SCHOOL
+  MEDICAL_CENTER
+  RESTAURANT
+}
+
+enum FinishingState {
+  UNFINISHED
+  SEMI_FINISHED
+  FULLY_FINISHED
+}
+
+model Apartment {
+  id           String         @id @default(uuid())
+  unitName     String
+  unitNumber   String         @unique
+  description  String?
+  price        Int
+  bedrooms     Int
+  bathrooms    Int
+  area         Int
+  images       String[]
+  developer    String           // TODO: Can be a foreign key to a Developer model
+  project      String?          // TODO: Can be a many-to-many relationship with Project model belonging to Developer model
+  finishing    FinishingState
+  deliveryDate DateTime
+  street       String
+  city         String
+  country      String
+  amenities    Amenity[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
