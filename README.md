@@ -95,6 +95,11 @@ Base URL: `http://localhost:3000`
 - The database is seeded with dummy data
 - The `apartments` service comes with units tests
 - The frontend is built with Next.js and Tailwind CSS
+- The search bar is composed of the following
+  - Unit name
+  - Unit number
+  - Project name
+  - Search and Reset buttons
 - The fetched apartments are cached using React Query to sync data across the pages
 
 ### Future Improvements
